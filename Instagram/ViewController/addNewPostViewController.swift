@@ -19,13 +19,16 @@ class addNewPostViewController: UIViewController, UIImagePickerControllerDelegat
     }
     @IBAction func AddPost(_ sender: Any)
     {
-        print("add Posr Pressed")
+        print("add Post Pressed")
         let caption = captionField.text
         let image = PostImage.image
         
         Post.postUserImage(image: image, withCaption: caption, withCompletion: nil)
     }
     
+    @IBAction func goBacktoPosts(_ sender: Any) {
+        self.performSegue(withIdentifier: "BacktoPosts", sender: nil)
+    }
     @IBAction func takeAPicture(_ sender: Any)
     {
         let vc = UIImagePickerController()
