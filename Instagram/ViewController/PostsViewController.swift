@@ -22,7 +22,13 @@ class PostsViewController: UIViewController {
     }
     
     @IBAction func onLogout(_ sender: Any) {
+        print("attm")
         NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
+    }
+    
+    @IBAction func AddPressed(_ sender: Any) {
+        print("performing Segue into the add post controller")
+        self.performSegue(withIdentifier: "addPostSegue", sender: nil)
     }
     
     

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -65,17 +66,18 @@
         <!--Posts View Controller-->
         <scene sceneID="xJH-OX-cTO">
             <objects>
-                <viewController id="WfT-Ge-Rbs" customClass="PostsViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="postsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WfT-Ge-Rbs" customClass="PostsViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jPw-oI-2Vs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="okO-pV-d06"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="4oS-km-8JA">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="V32-t9-Jae">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="V32-t9-Jae">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZC2-Pd-6yF">
-                                <rect key="frame" x="311" y="7" width="48" height="30"/>
+                                <rect key="frame" x="16" y="7" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Logout"/>
                                 <connections>
@@ -83,11 +85,77 @@
                                 </connections>
                             </button>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="eO2-lu-v6F">
+                            <connections>
+                                <action selector="AddPressed:" destination="WfT-Ge-Rbs" id="xDk-Qo-bjl"/>
+                                <segue destination="aH3-ZS-p8M" kind="presentation" identifier="addPostSegue" id="kSc-vX-mfK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OWN-bi-Mg4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1344.8" y="133.5832083958021"/>
+        </scene>
+        <!--Add New Post View Controller-->
+        <scene sceneID="0mf-fN-vf2">
+            <objects>
+                <viewController id="IDF-A5-eAG" customClass="addNewPostViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L43-tE-ymX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kA1-27-eGw">
+                                <rect key="frame" x="0.0" y="64" width="375" height="331"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="kA1-27-eGw" secondAttribute="height" multiplier="375:331" id="F0D-Ed-otF"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xqe-hm-pCu">
+                                <rect key="frame" x="16" y="621" width="343" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Share"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T83-JX-Bbd">
+                                <rect key="frame" x="16" y="403" width="343" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Take a Picture"/>
+                                <connections>
+                                    <action selector="takeAPicture:" destination="IDF-A5-eAG" eventType="touchUpInside" id="BWP-eJ-8Mu"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Write a Caption" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wef-ff-krf">
+                                <rect key="frame" x="16" y="472" width="343" height="141"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kA1-27-eGw" firstAttribute="trailing" secondItem="KTi-LY-5sT" secondAttribute="trailing" id="5Ka-Md-8vw"/>
+                            <constraint firstItem="kA1-27-eGw" firstAttribute="leading" secondItem="KTi-LY-5sT" secondAttribute="leading" id="fpF-3v-kAn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KTi-LY-5sT"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="MkP-kd-gmJ">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="VfK-b7-Evm">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZHX-hU-VwL">
+                                <rect key="frame" x="16" y="7" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="PostImage" destination="kA1-27-eGw" id="ppt-Zp-R8b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xDH-br-h9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3063.1999999999998" y="133.5832083958021"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rl6-I2-poP">
@@ -105,7 +173,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pyh-Ha-wZk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="630" y="6"/>
+            <point key="canvasLocation" x="625" y="46"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="D37-tT-IBC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aH3-ZS-p8M" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hqN-QG-e8a">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="IDF-A5-eAG" kind="relationship" relationship="rootViewController" id="iSg-B6-Shg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MyX-Cu-7ze" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2234" y="45"/>
         </scene>
     </scenes>
 </document>

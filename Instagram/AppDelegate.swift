@@ -32,11 +32,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // TODO: Load and show the login view controller
         }
         
-        if PFUser.current() != nil {
+        /*if PFUser.current() != nil {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             // view controller currently being set in Storyboard as default will be overridden
-            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "AuthenticatedViewController")
-        }
+            print("We are here")
+            
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "postsViewController")
+            self.window?.rootViewController = loginViewController
+        }*/
 
         // Override point for customization after application launch.
         return true
