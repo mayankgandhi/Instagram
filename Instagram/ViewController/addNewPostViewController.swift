@@ -10,11 +10,20 @@ import UIKit
 
 class addNewPostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var PostImage: UIImageView!
+    @IBOutlet weak var captionField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    @IBAction func AddPost(_ sender: Any)
+    {
+        print("add Posr Pressed")
+        let caption = captionField.text
+        let image = PostImage.image
+        
+        Post.postUserImage(image: image, withCaption: caption, withCompletion: nil)
     }
     
     @IBAction func takeAPicture(_ sender: Any)
@@ -38,6 +47,8 @@ class addNewPostViewController: UIViewController, UIImagePickerControllerDelegat
         // Dismiss UIImagePickerController to go back to your original view controller
         dismiss(animated: true, completion: nil)
     }
+    
+    
     
 
     override func didReceiveMemoryWarning() {

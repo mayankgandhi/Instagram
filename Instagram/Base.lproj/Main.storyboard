@@ -116,6 +116,9 @@
                                 <rect key="frame" x="16" y="621" width="343" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Share"/>
+                                <connections>
+                                    <action selector="AddPost:" destination="IDF-A5-eAG" eventType="touchUpInside" id="GWg-iY-aL0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T83-JX-Bbd">
                                 <rect key="frame" x="16" y="403" width="343" height="46"/>
@@ -151,6 +154,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="PostImage" destination="kA1-27-eGw" id="ppt-Zp-R8b"/>
+                        <outlet property="captionField" destination="Wef-ff-krf" id="bkv-vG-3WZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDH-br-h9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
